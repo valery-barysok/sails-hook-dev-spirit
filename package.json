@@ -1,0 +1,59 @@
+{
+  "name": "sails-hook-dev-spirit",
+  "version": "0.0.0",
+  "description": "Hook for Sails.js full of development utilities.",
+  "keywords": [
+    "sails.js",
+    "sails",
+    "hook",
+    "development",
+    "dev",
+    "dependencies",
+    "monitoring"
+  ],
+  "main": "index.js",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:valery-barysok/sails-hook-dev-spirit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/valery-barysok/sails-hook-dev-spirit/issues"
+  },
+  "homepage": "https://github.com/valery-barysok/sails-hook-dev-spirit",
+  "files": [
+    "lib/",
+    "LICENSE",
+    "README.md",
+    "index.js"
+  ],
+  "author": "Valery Barysok <valery.barysok@gmail.com>",
+  "contributors": [
+    {
+      "name": "Mike McNeil (mikermcneil)"
+    }
+  ],
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec --bail --check-leaks test/",
+    "test-ci": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/",
+    "test-cov": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks test/",
+    "test-tap": "./node_modules/.bin/mocha --reporter tap --check-leaks test/"
+  },
+  "license": "MIT",
+  "sails": {
+    "isHook": true
+  },
+  "dependencies": {
+    "fs-extra": "0.24.0",
+    "lodash": "3.10.1",
+    "pretty-bytes": "2.0.1"
+  },
+  "devDependencies": {
+    "coffee-script": "1.10.0",
+    "coveralls": "2.11.4",
+    "istanbul": "^0.3.19",
+    "mocha": "2.3.2",
+    "sails": "0.11.0",
+    "should": "7.1.0"
+  }
+}
