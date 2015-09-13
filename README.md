@@ -15,7 +15,7 @@ A Sails hook that provides diagnostic / debugging information during development
 
 Based on [sails-hook-dev](https://github.com/balderdashy/sails-hook-dev)
 
-![](http://i.imgur.com/3xJDAXr.png)
+![](http://i.imgur.com/bQFcqUe.png)
 
 > ###### Note
 >

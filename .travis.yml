@@ -11,5 +11,11 @@ git:
 branches:
   only:
     - master
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/1d7d5bbc342402e8a9d3
+    on_success: always
+    on_failure: always
 script: "npm run-script test-ci"
 after_script: "cat ./coverage/lcov.info | coveralls"
