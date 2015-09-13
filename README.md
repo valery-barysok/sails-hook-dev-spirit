@@ -1,5 +1,6 @@
 # sails-hook-dev-spirit
 
+[![Join the chat at https://gitter.im/valery-barysok/sails-hook-dev-spirit][gitter-join-chat-image]][gitter-channel-url]
 [![NPM Version][npm-version-image]][npm-url]
 [![NPM Downloads][npm-downloads-image]][npm-url]
 [![Node.js Version][node-image]][node-url]
@@ -67,5 +68,5 @@ MIT &copy; 2015 Valery Barysok, Mike McNeil
 [coveralls-url]: https://coveralls.io/r/valery-barysok/sails-hook-dev-spirit?branch=master
 [node-image]: https://img.shields.io/node/v/sails-hook-dev-spirit.svg?style=flat-square
 [node-url]: http://nodejs.org/download/
-[gitter-join-chat-image]: https://badges.gitter.im/Join%20Chat.svg
+[gitter-join-chat-image]: https://badges.gitter.im/Join%20Chat.svg?style=flat-square
 [gitter-channel-url]: https://gitter.im/valery-barysok/sails-hook-dev-spirit
