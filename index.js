@@ -4,6 +4,7 @@ var lodash = require('lodash');
 var prettyBytes = require('pretty-bytes');
 var fs = require('fs-extra');
 var path = require('path');
+var jsonCycle = require('json-cycle');
 
 /**
  * sails-hook-dev-spirit hook
@@ -85,7 +86,7 @@ var hook = function (sails) {
         },
 
         'get /dev/config': function (req, res) {
-          return res.json(req._sails.config);
+          return res.json(jsonCycle.decycle(req._sails.config));
         },
 
         'get /dev/memory': function (req, res) {
