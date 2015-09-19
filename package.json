@@ -51,7 +51,8 @@
     "fs-extra": "0.24.0",
     "json-cycle": "1.0.5",
     "lodash": "3.10.1",
-    "pretty-bytes": "2.0.1"
+    "pretty-bytes": "2.0.1",
+    "q": "1.4.1"
   },
   "devDependencies": {
     "coffee-script": "1.10.0",

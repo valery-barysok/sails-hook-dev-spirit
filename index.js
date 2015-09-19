@@ -1,6 +1,7 @@
 'use strict';
 
-var lodash = require('lodash');
+var Q = require('q');
+var _ = require('lodash');
 var prettyBytes = require('pretty-bytes');
 var fs = require('fs-extra');
 var path = require('path');
@@ -94,14 +95,22 @@ var hook = function (sails) {
         },
 
         'get /dev/dependencies': function (req, res) {
-          var dependencies = fs.readJsonSync(path.resolve(sails.config.appPath, 'package.json')).dependencies;
-          return res.json(lodash.reduce(dependencies, function (memo, semverRange, depName) {
-            var actualDependencyVersion = fs.readJsonSync(path.resolve(sails.config.appPath, path.join('node_modules', depName, 'package.json'))).version;
-            memo[depName] = actualDependencyVersion;
-            return memo;
-          }, {}));
+          Q.nfcall(fs.readJson, path.resolve(sails.config.appPath, 'package.json'), "utf-8")
+              .then(function (json) {
+                Q.all(_.map(json.dependencies, function (semverRange, depName) {
+                      return Q.nfcall(fs.readJson, path.resolve(sails.config.appPath, path.join('node_modules', depName, 'package.json')), "utf-8")
+                          .then(function (json) {
+                            return [depName, json.version];
+                          })
+                    }))
+                    .catch(function (err) {
+                      return res.serverError(err);
+                    })
+                    .done(function (deps) {
+                      return res.json(_.zipObject(deps));
+                    });
+              });
         }
-
       }
     }
   };
