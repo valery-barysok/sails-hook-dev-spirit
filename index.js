@@ -87,7 +87,7 @@ var hook = function (sails) {
         },
 
         'get /dev/config': function (req, res) {
-          return res.json(jsonCycle.decycle(req._sails.config));
+          return res.json(jsonCycle.decycle(sails.config));
         },
 
         'get /dev/memory': function (req, res) {
@@ -100,7 +100,7 @@ var hook = function (sails) {
                 Q.all(_.map(json.dependencies, function (semverRange, depName) {
                       return Q.nfcall(fs.readJson, path.resolve(sails.config.appPath, path.join('node_modules', depName, 'package.json')), "utf-8")
                           .then(function (json) {
-                            return [depName, json.version];
+                            return [depName, json.version + (semverRange !== json.version ? ' (package.json version: ' + semverRange + ')' : '')];
                           })
                     }))
                     .catch(function (err) {
